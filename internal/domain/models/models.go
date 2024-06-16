@@ -3,7 +3,7 @@ package models
 type User struct {
 	ID       int64
 	Email    string
-	Passhash string
+	Passhash []byte
 }
 type App struct {
 	ID     int32
