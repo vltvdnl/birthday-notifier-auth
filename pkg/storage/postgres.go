@@ -58,7 +58,7 @@ func (r *Postgres) App(ctx context.Context, id int) (models.App, error) {
 	sqlstatement := `SELECT id, name, secret FROM apps WHERE id = $1`
 	var app models.App
 
-	err := r.db.QueryRow(sqlstatement, id).Scan(&app)
+	err := r.db.QueryRow(sqlstatement, id).Scan(&app.ID, &app.Name, &app.Secret)
 	if err != nil {
 		return models.App{}, err //TODO if app is not found
 	}
